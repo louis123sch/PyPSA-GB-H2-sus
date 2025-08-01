@@ -1,0 +1,101 @@
+# PyPSA-GB-H2-sus .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Environment files
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# PyPSA specific
+*.nc
+*.h5
+*.hdf5
+
+# Optimization solver files
+*.lp
+*.mps
+*.sol
+*.log
+gurobi.log
+
+# Data files that might be large or generated
+*.csv.backup
+*_backup.csv
+temp_*.csv
+output_*.csv
+
+# Results and temporary files
+results/
+temp/
+tmp/
+output/
+figures/
+plots/
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Conda environments
+*.tar.gz
+
+# Large data files
+*.xlsx
+*.xls
+*.zip
+*.tar
+*.gz
+*.bz2
+
+# Log files
+*.log
+*.out
+*.err
+
+# Temporary files
+*.tmp
+*.temp
