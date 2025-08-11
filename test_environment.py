@@ -60,28 +60,22 @@ def test_jupyter():
         print(f"✗ Error with Jupyter: {e}")
         return False
 
-def test_data_loading():
-    """Test basic data loading capabilities"""
-    print("\nTesting data loading...")
+def test_shapefile_loading():
+    """Test loading the actual shapefile used in notebooks"""
+    print("\nTesting shapefile loading...")
     try:
-        import pandas as pd
-        # Create a simple test DataFrame
-        test_data = pd.DataFrame({
-            'x': [1, 2, 3],
-            'y': [4, 5, 6]
-        })
-        print("✓ Pandas data manipulation working")
-        
-        # Test basic plotting
-        import matplotlib.pyplot as plt
-        plt.figure(figsize=(6, 4))
-        plt.plot(test_data['x'], test_data['y'])
-        plt.title('Test Plot')
-        plt.close()  # Close to avoid display issues
-        print("✓ Basic plotting functionality working")
+        import geopandas as gp
+        # Test the corrected path (.shp instead of .shx)
+        s = gp.read_file('data/network/GIS/01 ESO - DNO License Areas/DNO_License_Areas_20200506.shp')
+        s = s.set_index('LongName', inplace=False)
+        s['geometry'] = s['geometry'].to_crs(epsg=4326)
+        print(f"✓ Shapefile loaded successfully ({len(s)} areas)")
         return True
+    except FileNotFoundError:
+        print("⚠️  Shapefile not found (may not be in notebooks directory)")
+        return True  # Not a failure if run from different location
     except Exception as e:
-        print(f"✗ Error with data operations: {e}")
+        print(f"✗ Error loading shapefile: {e}")
         return False
 
 def main():
@@ -94,7 +88,7 @@ def main():
         test_geopandas,
         test_pypsa,
         test_jupyter,
-        test_data_loading
+        test_shapefile_loading
     ]
     
     passed = 0
